@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class  name="app.modelo.Libro"  table="libros">
+  
+      <id column="ID" name="ID" type="integer">
+      <generator class="assigned"/>
+    </id>
+    
+    <property name="titulo" column="titulo" type="string"  />
+    <property name="isbn" column="isbn" type="string"  />
+    <property name="publicacion" column="publicacion" type="int"  />
+    <property name="precio" column="precio" type="double"  />
+    <property name="descripcion" column="descripcion" type="string"  />
+    
+    <set name="autores" table="autores_libros"
+                 cascade="persist,refresh,save-update,merge">
+            <key column="id_libro"/>
+            <many-to-many column="id_autor"
+                          class="app.modelo.Autor"/>
+   </set>
+   
+   <many-to-one name="editorial" class="app.modelo.Editorial"
+                     column="id_editorial"
+                     not-null="false"
+                     cascade="persist,refresh,save-update,merge"/>
+   
+  </class>
+    
+</hibernate-mapping>

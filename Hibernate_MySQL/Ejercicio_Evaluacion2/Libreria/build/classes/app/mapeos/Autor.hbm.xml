@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class  name="app.modelo.Autor"  table="autores">
+  
+   <id column="ID" name="ID" type="integer">
+      <generator class="assigned"/>
+    </id>
+    
+    <property name="nombre" column="nombre" type="string"  />
+    <property name="nacionalidad" column="nacionalidad" type="string"  />
+    <property name="comentarios" column="comentarios" type="string"  />
+    
+   <set name="libros" inverse="true" table="autores_libros"
+                 cascade="persist,refresh,save-update,merge">
+            <key column="id_autor"/>
+            <many-to-many column="id_libro"
+                          class="app.modelo.Libro"/>
+   </set>
+    
+  </class>
+    </hibernate-mapping>

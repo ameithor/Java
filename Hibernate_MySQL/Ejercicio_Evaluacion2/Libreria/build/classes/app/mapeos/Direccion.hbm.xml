@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class  name="app.modelo.Direccion"  table="direcciones">
+  
+  <id column="ID" name="ID" type="integer">
+      <generator class="assigned"/>
+    </id>
+    
+    <property name="calle" column="calle" type="string"  />
+    <property name="poblacion" column="poblacion" type="string"  />
+    <property name="provincia" column="provincia" type="string"  />
+    
+    <property name="numero" column="numero" type="integer"  />
+    <property name="cp" column="cp" type="integer"  />
+  
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class  name="app.modelo.Editorial"  table="editoriales">
+  
+    <id column="ID" name="ID" type="integer">
+      <generator class="assigned"/>
+    </id>
+    
+     <property name="nombre" column="nombre" type="string"  />
+     <property name="nif" column="nif" type="string"  />
+     
+     <many-to-one name="direccion" column="id_direccion" class="app.modelo.Direccion"
+                     unique="true" not-null="false" cascade="all" />
+     
+     <set name="libros" inverse="true">
+            <key column="id_editorial"/>
+            <one-to-many class="app.modelo.Libro"/>
+     </set>
+
+  </class>
+</hibernate-mapping>
