@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            var xhr;
+            function AjaxConnect(){
+                // solo para Explorer 6 y anteriores
+                if(window.ActiveXObject)
+                    xhr = new ActiveXObject("Microsoft.XMLHttp");
+                // resto de navegadores
+                else if((window.XMLHttpRequest) || (typeof XMLHttpRequest)!= undefined)
+                    xhr = new  XMLHttpRequest();
+                // si el navegador no soporta AJAX
+                else{
+                    alert("Su navegador no soporta AJAX");
+                    return;
+                }
+
+                enviarPeticion();
+            }
+            
+                function enviarPeticion(){
+                // Seleccionar la lista de todos los titulos
+                
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;      
+                // Obtener el indice del libro seleccionado
+                
+
+                // preparar la peticion
+                // true --> peticion asincrona, false --> peticion sincrona
+                xhr.open("GET", "MainAjax?username="+username+"&password=" +password, true);
+
+                // informar de la funcion que procesara la respuesta
+                xhr.onreadystatechange = procesarRespuesta; // sin parentesis
+
+                // enviar la peticion
+                xhr.send(null);
+            }
+
+            function procesarRespuesta(){
+                // si se ha recibido por completo la respuesta
+                if(xhr.readyState == 4){
+                    document.getElementById("respuesta").innerHTML =
+                        "<h4 bgcolor='red'>" + xhr.responseText + "</h4>";
+                }
+            }
+    
+        </script>
+                
+    </head>
+    <body>
+        <div>TODO write content</div>
+        Usuario: <input type="text" id="username" name="username"/> <br>
+        Password: <input type="text" id="password" name="password"/> <br>
+        <input type="submit" onclick="AjaxConnect();"/>
+        
+        <br><br>
+        <div id="respuesta">respuesta..</div>
+    </body>
+</html>
