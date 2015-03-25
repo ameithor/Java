@@ -1,0 +1,53 @@
+#logo {margin: 0 auto; min-width: 949px; max-width: 1225px; padding: 0 2%}
+#logo a:first-child {position: absolute; z-index:100; top: 6px; left: 0px}                   
+#logo-txt {
+    position: absolute;
+    margin-left: 0px;
+    left: 80px;
+}
+
+#logo-img {
+    position: relative;
+    z-index:99;
+
+}
+
+#body {
+    position: absolute;
+    margin-left: 100px;
+    margin-top: 100px;
+    color: #000000; 
+    width: 100%;
+    alignment-adjust: middle;
+    border: solid blue;
+    max-width: 80%;
+}
+
+#div-table {
+    position: relative;
+    text-align:  center;
+    border: solid green;
+    width: 100%;
+
+}
+
+#gridLibros-table {
+    position: relative;
+    text-align:  center;
+    border: solid red;
+    width: 100%;
+}
+
+#tr,td,th {
+    text-align: center;
+    border: solid red;
+    min-height: 300px;
+    min-width: 200px; 
+
+}
+
+
+
+
+
+
